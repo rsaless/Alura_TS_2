@@ -1,5 +1,6 @@
 import { NegociacoesView, MensagemView } from '../views/index';
 import { Negociacao, Negociacoes } from '../models/index';
+import { domInject } from '../helpers/decorators/index';
 
 enum DiaDaSemana {
     Domingo,
@@ -13,9 +14,15 @@ enum DiaDaSemana {
 
 export class NegociacaoController {
 
+    @domInject('#data')
     private _inputData: JQuery;
+
+    @domInject('#quantidade')
     private _inputQuantidade: JQuery;
+
+    @domInject('#valor')
     private _inputValor: JQuery;
+
     private _negociacoes = new Negociacoes();
     private _negociacoesView = new NegociacoesView('#negociacoesView');
     private _mensagemView = new MensagemView('#mensagemView');
