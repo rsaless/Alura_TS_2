@@ -1,12 +1,26 @@
-export class Negociacao {
+import { Imprimivel } from './Imprimivel';
+
+export class Negociacao extends Imprimivel{
     
     constructor(
-        readonly _data: Date, 
-        readonly _quantidade: number, 
-        readonly _valor: number) {}
+        readonly data: Date, 
+        readonly quantidade: number, 
+        readonly valor: number) {
+        super();
+    }
 
     get volume() {
 
-        return this._quantidade * this._valor;
+        return this.quantidade * this.valor;
+    }
+
+    paraTexto(): void {
+        console.log('-- paraTexto --');
+        console.log(
+            `Data: ${this.data}
+            Quantidade: ${this.quantidade}, 
+            Valor: ${this.valor}, 
+            Volume: ${this.volume}`
+        )
     }
 }
