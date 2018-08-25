@@ -1,12 +1,9 @@
-import { Imprimivel } from './Imprimivel';
+import { MeuObjeto } from './MeuObjeto';
 
-export class Negociacao extends Imprimivel{
+export class Negociacao implements MeuObjeto<Negociacao> {
     
-    constructor(
-        readonly data: Date, 
-        readonly quantidade: number, 
-        readonly valor: number) {
-        super();
+    constructor(readonly data: Date, readonly quantidade: number, readonly valor: number) {
+
     }
 
     get volume() {
@@ -15,12 +12,19 @@ export class Negociacao extends Imprimivel{
     }
 
     paraTexto(): void {
-        console.log('-- paraTexto --');
+        console.log('Impressão');
         console.log(
             `Data: ${this.data}
             Quantidade: ${this.quantidade}, 
             Valor: ${this.valor}, 
             Volume: ${this.volume}`
-        )
+        );
+    }
+
+    ehIgual(negociacao: Negociacao): boolean {
+
+        return this.data.getDate() == negociacao.data.getDate()
+            && this.data.getMonth() == negociacao.data.getMonth() 
+            && this.data.getFullYear() == negociacao.data.getFullYear();
     }
 }
